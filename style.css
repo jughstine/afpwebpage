@@ -1,0 +1,585 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 5px 30px;
+            padding: 0;
+            background-color: #f4f5f7; /* Gray background for the body */
+        }
+        .header {
+            color: #333;
+            background-color: #f4f5f7; /* Gray background for the header */
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo{
+            width: 15%;
+            padding-right: 2%;
+        }
+        
+        .header > div {
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .header p {
+            font-size: 24px; /* Adjust the font size as needed */
+            margin-left: -200px;
+        }
+
+        .header p #username {
+            font-weight: bold;
+        }
+    
+        .dashboard-container {
+            width: 1230px; /* Set a fixed width */
+            height: 480px;
+            padding: 15px;
+            border: 1px solid #ccc; /* Add border around the container */
+            border-radius: 8px; /* Add border radius */
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Add box shadow */
+            overflow: hidden; /* Hide overflow */
+            flex-grow: 1;
+        }
+        
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: #fff; /* White background for the table */
+            border: 1px solid #ccc; /* Add border around the table */
+            border-radius: 8px; /* Add border radius for rounded corners */
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left; /* Justify content */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 25%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            padding-left: 12%;
+        }
+
+        th:nth-child(4), td:nth-child(4) {
+            padding-left: 7%;
+        }
+
+        th:nth-child(5){
+            padding-left: 7%;
+        }
+        
+        th {
+            background-color: #fffb00; /* Light gray background for table headers */
+        }
+        .pagination {
+            position: relative;
+            display: flex;
+            justify-content: right;
+            
+            margin-right: 15px;
+        } 
+
+        .pagination .prev,
+        .pagination .next {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pagination .prev:hover,
+        .pagination .next:hover {
+            background-color: #18f300;
+        }
+
+        .pagination .prev {
+            margin-right: 5px;
+        }
+
+        .pagination .next {
+            margin-left: 5px;
+        }
+
+        .action-buttonV   {
+            padding: 6px 12px;
+            border: none;
+            background-color: #390BC4;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .action-buttonV:hover {
+            background-color: #00008B; /* Darker green */
+        }
+        
+        .action-buttonU {
+            padding: 6px 12px;
+            border: none;
+            background-color: #09E209; /* Green */
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .action-buttonU:hover {
+            background-color: #005A00; /* Darker green */
+        }
+
+        .action-buttonD {
+            padding: 6px 12px;
+            border: none;
+            background-color: #FF0000; /* Green */
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .action-buttonD:hover {
+            background-color: #B30000; /* Darker green */
+        }
+
+                /* Add hover effect */
+        tr:hover {
+            background-color: #f2f2f2; /* Gray */
+        }
+
+           
+
+        .clicked {
+            background-color: lightgray; /* Change background color when clicked */
+            border-top: 1px solid rgb(0, 0, 0) !important; /* Add border when clicked */
+            border-bottom: 1px solid rgb(0, 0, 0) !important; /* Add border when clicked */
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            padding-top: 0%;
+            padding-bottom: 12px;
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+            z-index: 2; /* Sit on top */
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            
+        }
+
+        .modal-close {
+            cursor: pointer;
+            font-size: 24px; /* Large '×' symbol */
+            font-weight: bold;
+        }
+        
+        /* Hover effect for close button */
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-body {
+            display: flex;
+            margin-top: 0%;
+        }
+
+        .modal-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 20px;
+            margin-bottom: 350px;
+            overflow: hidden;
+        }
+
+        .modal-circle img {
+            width: auto; /* Allows the image to scale its width automatically */
+            height: 100%; /* Sets the image height to fill the container */
+            min-width: 100%; /* Ensures the image covers the width of the container */
+            object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+            object-position: center; /* Centers the image within the container */
+        }
+        .modal-right {
+            flex: 2;
+        }
+
+        .modal-input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .modal-file {
+            margin-bottom: 14px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1; /* Sit on top */
+            display: none; /* Hidden by default */
+        }
+
+        .if-abroad {
+            text-align: center; /* Center the text */
+            color: #ff0000; /* Change the color if needed */
+            margin-top: 15px; /* Add space above the divider */
+            margin-bottom: 15px; /* Add space below the divider */
+            justify-content: center;
+        }
+
+        .modal-file button {
+            margin-right: 10px; /* Add space to the right of each button */
+        }
+        
+        /* If you want to specifically target only the first button (ID File) */
+        .idFileViewButton {
+            margin-right: 300px; /* Adjust the space between the buttons as needed */
+            margin-top: 10px;
+        }
+
+        .modal-right .input-row {
+            display: flex; /* Align children in a row */
+            justify-content: space-between; /* Distribute space between children */
+            margin-right: 30px;
+        }
+
+        .modal-right .input-row > div {
+            flex: 1; /* Each child div will take equal space */
+            margin-right: 5px; /* Add some space between the inputs */
+        }
+        
+        .modal-right .input-row .modal-input {
+            margin-right: 5px; /* Add some space between the inputs */
+        }
+        
+        .modal-right .input-row .modal-input:last-child {
+            margin-right: 0; /* Remove margin from the last input in the row */
+            
+        }
+
+        .input-label {
+            font-weight: bold;
+            margin-bottom: 5px; /* Adjust as needed */
+        }
+
+        .input-row > div {
+            display: inline-block; /* Or flex, depending on your layout */
+            margin-right: 10px; /* Adjust spacing between the inputs */
+        }
+
+        .modal-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes the button to the bottom */
+            height: 100%; /* Ensure the container takes up full height */
+        }
+        
+        .submitUpdateButton {
+            /* Add styles for your submit button here */
+            padding: 10px;
+            margin-top: 20px; /* Add some space above the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .search-container {
+            margin-bottom: 5px;
+            text-align: right;
+            margin-right: 15px;
+            
+        }
+        
+        #searchInput {
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .sidebar {
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch; /* Stretch sidebar buttons full width */
+            margin-top: 5px;
+
+        }
+        
+        .sidebar button {
+            margin-bottom: 20px; /* Space between buttons */
+            padding: 10px; /* Padding inside buttons */
+            width: 140px;
+            /* Other styling properties for buttons */
+        }
+        
+        /* Style the buttons to look better */
+        .sidebar button {
+            background-color: #f0f0f0; /* Light grey background */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 4px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar button:hover {
+            background-color: #e7e7e7; /* Slightly darker on hover */
+        }
+
+        .admin-container {
+            display: flex;
+        }
+
+        #signOutBtn {
+            margin-top: 290px; /* Adjust this value to create some space above the Sign Out button */
+        }
+
+        #signOutBtn:hover {
+            background-color: #ff0000; /* Slightly darker on hover */
+        }
+
+        .modalAdd {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 450px;
+            border-radius: 5px;
+        }
+        .close-buttonAdd {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-buttonAdd:hover,
+        .close-buttonAdd:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"] {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .modal-account-submit {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-account-submit:hover {
+            background-color: #0056b3;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .close-buttonUpdate {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-buttonUpdate:hover,
+        .close-buttonUpdate:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            justify-content: space-between; /* Space between title and dropdown */
+            margin-bottom: 20px; /* Space before the first input field */
+        }
+        
+        .update-role-select {
+            padding: 5px;
+            margin-right: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px; /* Adjust as needed */
+            background-color: #fff; /* Match modal background or as preferred */
+            cursor: pointer;
+        }
+
+        .modal-update-submit {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-update-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .modalLogs-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Changed from flex to none */
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .modalLogs {
+            width: 85%; /* Responsive width */
+            height: 70%; /* Responsive height */
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .modalLogs-header {
+            background: #0056b3;
+            color: white;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 20px;
+            display: flex; /* Add flex display */
+            justify-content: space-between; /* Space between title and close button */
+            align-items: center;
+        }
+        #searchLogs {
+            margin-left: 70%;
+            margin-top: 10px;
+        }
+        .modalLogs-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1; /* Takes up available space */
+        }
+        .modalLogs-footer {
+            display: flex;
+            justify-content: start; /* Align buttons to the left */
+            align-items: center;
+            gap: 0.5em; /* Space between buttons */
+            padding: 0.5em; /* Add padding around the footer */
+        }
+        
+        .select-all-logs-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 0.5em 1em; /* Adjust the padding as needed */
+            cursor: pointer;
+            /* Add any additional styling here */
+        }
+        .unselect-all-logs-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 0.5em 1em; /* Adjust the padding as needed */
+            cursor: pointer;
+            /* Add any additional styling here */
+        }
+        
+        .delete-selected-logs-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            /* Add any additional styling here */
+        }
+        .closeLogs-button, .clearLogs-button {
+            cursor: pointer;
+    background: #dd1122;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-left: auto; /* Push the button to the right */
+        }
+        .modalLogs-body {
+            padding: 0.3em; /* Adds padding around the modal body */
+        }
+        .modalLogs-body div { /* Assuming each log entry is in a div, adjust the selector as needed */
+            padding: 0.3em; /* Adds padding to each log entry */
+            margin-bottom: 0.3em; /* Adds space between log entries */
+            background-color: #f2f2f2; /* Just an example, adjust the background color as needed */
+            border-radius: 4px; /* Optional: rounds the corners of the log entries */
+        }
+
+        .log-entry {
+            display: flex;
+            align-items: center;
+            gap: 0.5em; /* Adjust the space between checkbox and text as needed */
+        }

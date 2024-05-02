@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(125,253,45,1) 100%);
+    background-size: cover;
+    background-position: center;
+    font-family: 'roboto', sans-serif;
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.container {
+    
+    position: relative;
+    max-width: 900px; 
+    width: calc(100% - 100px);
+    height: auto;
+    margin: 0 auto;
+    padding: 50px;
+    box-shadow:  2px 3px 2px 3px #b4a7a7;
+    border-radius: 1cqmax;
+    border-color: #000000;
+    border: 0px solid transparent;
+    background: rgb(253,253,253);
+background: radial-gradient(circle, rgba(253,253,253,1) 0%, rgba(231,225,244,1) 89%, rgba(193,200,207,1) 100%);
+    border-image-slice: 50;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    text-transform: none;
+    text-align: center;
+}
+
+.firstword,
+.secondword,
+.thirdword {
+    font-size: inherit;
+}
+
+.subtitle {
+    color: rgb(50, 51, 46);
+    font-weight: 800;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+}
