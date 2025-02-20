@@ -4,7 +4,7 @@ var rowsPerPage = 10;
 var dataTable = document.getElementById('dataTable');
 var rows = dataTable.rows;
 
-function showRows() {
+window.showRows = function showRows() {
     var startIndex = currentPage * rowsPerPage;
     var endIndex = startIndex + rowsPerPage;
 

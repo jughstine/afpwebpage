@@ -1,22 +1,28 @@
 
-        body {
+        body , .main{
+            display: flex;
+            height: 100vh; 
             font-family: Arial, sans-serif;
-            margin: 5px 30px;
-            padding: 0;
+            margin: 0px;
             background-color: #ffffff; /* Gray background for the body */
         }
-        .header {
-            position: fixed;
+        .sidebar {
+            position: fixed; /* Keep header fixed */
             top: 0;
             left: 0;
-            width: 250px; /* Adjust width as needed */
-            height: 100vh; /* Full height */
+            width: 250px; /* Width of the header */
+            height: 100%; /* Full height */
             background-color: #f4f5f7; /* Background color */
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .title h1 {
+            color: #000 !important; /* Ensures black text */
+            font-weight: bold; /* Makes it more visible */
         }
 
         .logo{
@@ -24,12 +30,12 @@
             padding-right: 3%;
         }
         
-        .header > div {
+        .sidebar > div {
             display: flex;
             align-items: center;
         }
 
-        .header .sidebar {
+        .sidebar .sidebar-buttons {
             margin-right: 20px;
             display: flex;
             flex-direction: column;
@@ -38,12 +44,12 @@
 
         }
 
-        .header p {
+        .sidebar p {
             font-size: 24px; /* Adjust the font size as needed */
             margin-left: -200px;
         }
 
-        .header p #username {
+        .sidebar p #username {
             font-weight: bold;
         }
     
@@ -51,20 +57,28 @@
             width: 1230px; /* Set a fixed width */
             height: 480px;
             padding: 15px;
-            border: 1px solid #ccc; /* Add border around the container */
+            border: 1px solid #ffffff; /* Add border around the container */
             border-radius: 8px; /* Add border radius */
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff52; /* White background */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Add box shadow */
             overflow: hidden; /* Hide overflow */
             flex-grow: 1;
         }
+
+        .main-content {
+    margin-left: 250px; /* Leave space for the header */
+    padding: 20px; /* Add some padding */
+    flex-grow: 1; /* Allow it to grow */
+    background-color: #ffffff; /* Background color for main content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
         
         table {
             table-layout: fixed;
             border-collapse: separate; /* Prevents border-collapse issue */
             border-spacing: 0;
             background-color: #fff; /* White background for the table */
-            border: 1px solid #ccc; /* Add border around the table */
+            border: 1px solid #000000; /* Add border around the table */
             border-radius: 8px; /* Add border radius for rounded corners */
             width: 100%;
             overflow: hidden; /* Ensures border radius applies */
@@ -73,23 +87,30 @@
         /* Ensure headers and cells are styled properly */
         table th, 
         table td {
-
             text-align: center; /* Align text to the left */
             white-space: nowrap; /* Prevent text wrapping */
-            border: 1px solid #ccc; /* Ensure borders appear between cells */
+            border: 1px solid #000000; /* Ensure borders appear between cells */
+            color: #000;
         }
         
         /* Header background color */
         th {
-            background-color: #fffb00; /* Yellow background for table headers */
+            background-color: #00aaff; /* Yellow background for table headers */
+            color: #000;
+        }
+
+        .dashboard-container th {
+            color: black;
+            font-weight: bold;
+
         }
         
         /* Adjust column widths properly */
-        th:nth-child(1), td:nth-child(1) { width: 12%; } /* Pensioner No. */
+        th:nth-child(1), td:nth-child(1) { width: 14%; } /* Pensioner No. */
         th:nth-child(2), td:nth-child(2) { width: 28%; } /* Full Name */
         th:nth-child(3), td:nth-child(3) { width: 20%; } /* Category */
         th:nth-child(4), td:nth-child(4) { width: 20%; } /* Serial Number */
-        th:nth-child(5), td:nth-child(5) { width: 20%; } /* Task */
+        th:nth-child(5), td:nth-child(5) { width: 17%; } /* Task */
         
         /* Ensure rounded corners are applied correctly */
         thead tr:first-child th:first-child {
@@ -104,7 +125,7 @@
         tbody tr:last-child td:last-child {
             border-bottom-right-radius: 8px;
         }
-                .pagination {
+            .pagination {
             position: relative;
             display: flex;
             justify-content: right;
@@ -205,22 +226,22 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50%;
+            width: 90%; /* Increase width to 80% of the viewport */
+            max-width: 1000px; /* Set a maximum width */
+            max-height: 80%; /* Set a maximum height */
             background-color: white;
             padding: 20px;
-            padding-top: 0%;
-            padding-bottom: 12px;
             border-radius: 8px;
             display: none; /* Hidden by default */
             z-index: 2; /* Sit on top */
+            overflow-y: auto; /* Allow scrolling if content exceeds max height */
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
-            
+
         }
 
         .modal-close {
@@ -238,14 +259,14 @@
 
         .modal-body {
             display: flex;
-            margin-top: 0%;
+            flex-direction: row; /* Keep the left and right sections side by side */
         }
-
+        
         .modal-left {
-            flex: 1;
+            flex: 1; /* Allow this section to take up available space */
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center align items */
         }
 
         .modal-circle {
@@ -273,6 +294,17 @@
             flex: 2;
         }
 
+        .modal-file-subs {
+        display: flex; /* Use flexbox for horizontal layout */
+        flex-direction: row; /* Align items in a row */
+        align-items: center; /* Center items vertically */
+        margin-bottom: 20px; 
+        }
+
+        .modal-file-subs .file-item {
+            margin-right: 20px; 
+        }
+
         .modal-input {
             width: 90%;
             padding: 10px;
@@ -283,7 +315,13 @@
         }
 
         .modal-file {
-            margin-bottom: 14px;
+            display: flex; /* Use flexbox */
+            flex-direction: row; /* Stack items vertically */
+            margin-bottom: 20px; /* Space below the modal file section */
+        }
+
+        .file-item {
+            margin-bottom: 10px; /* Space between each file item */
         }
 
         .overlay {
@@ -306,13 +344,14 @@
         }
 
         .modal-file button {
-            margin-right: 10px; /* Add space to the right of each button */
-        }
-        
-        /* If you want to specifically target only the first button (ID File) */
-        .idFileViewButton {
-            margin-right: 300px; /* Adjust the space between the buttons as needed */
-            margin-top: 10px;
+            padding: 10px; /* Padding inside buttons */
+    width: 100%; /* Make buttons take the full width of the container */
+    background-color: #000000; /* Black background */
+    color: white; /* Text color for better contrast */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
         }
 
         .modal-right .input-row {
@@ -360,32 +399,29 @@
         }
 
         .search-container {
-            text-align: right;
-            margin-right: 15px;
-            position: absolute;
+            position: absolute; /* Position it absolutely within the admin-container */
+            top: 20px; /* Adjust this value to move it down from the top */
+            right: 20px; /* Adjust this value to move it from the right */
+            z-index: 1;
         }
         
         #searchInput {
-            width: 30%;
+            width: 50%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         
         .sidebar button {
-            margin-bottom: 20px; /* Space between buttons */
+            margin-bottom: 20px; 
             padding: 10px; /* Padding inside buttons */
-            width: 140px;
-            /* Other styling properties for buttons */
-        }
-        
-        /* Style the buttons to look better */
-        .sidebar button {
-            background-color: #000000; /* Light grey background */
+            width: 100%; /* Make buttons take the full width of the sidebar */
+            background-color: #000000; /* Black background */
+            color: white; /* Text color for better contrast */
             border: 1px solid #ddd; /* Light grey border */
             border-radius: 4px; /* Rounded corners */
-            cursor: pointer;
-            transition: background-color 0.3s;
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth background color transition */
         }
         
         .sidebar button:hover {

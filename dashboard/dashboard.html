@@ -9,54 +9,71 @@
 </head>
 
 <body>    
-    <script type="module" src="./dashboard_js/firebaseConfig.js"></script>
-    <script type="module" src="./dashboard_js/dash.js"></script>
-    <script type="module" src="./dashboard_js/main.js"></script>
-
-    <div class="main-content">        
-        <div class="header">
-            <div>
-                <img src="../assets/pgmc_logo.png" alt="Your Image" class="logo">
+    <script type="module" src="./dashboard_js/firebaseConfig.js" ></script>
+    <script type="module" src="./dashboard_js/dash.js" ></script>
+    <script type="module" src="./dashboard_js/main.js" ></script>
+    <script type="module" src="./dashboard_js/modal.js" defer></script>
+    <script type="module" src="./dashboard_js/table.js" defer></script>
+    <script type="module" src="./dashboard_js/account.js" defer></script>
+    <script type="module" src="./dashboard_js/logs.js" defer></script>
+    
+    <div class="main">        
+        <div class="sidebar">
+                
+            <div class="img">
+                <img src="../assets/pgmc_logo.png" alt="PMGC Logo" class="logo">
+            </div>
+            <div class="title">
                 <h1>AFPPGMC</h1>
             </div>
-            <div>
-                <p>Good day, <span id="username">Admin</span></p>
-            </div>
-
-            <div class="sidebar">
+            <div class="sidebar-buttons">
                 <button id="addAccountBtn">Add Account</button>
                 <button id="updateAccountBtn">Update Account</button>
                 <button id="viewLogsBtn">View Logs</button>
                 <button id="signOutBtn">Sign Out</button>
             </div>
         </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search by Name, Pensioner No., Category...">
-        </div>
-        <div class="admin-container">
-            <div class="dashboard-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Pensioner No.</th>
-                            <th>Full Name</th>
-                            <th>Category</th>
-                            <th>Serial Number</th>
-                            <th>Task</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dataTable"></tbody>
-                </table>
+
+        <div class="main-content">
+
+            <div>
+                <p>Good day, <span id="username">Admin</span></p>
+            </div>  
+
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by Name, Pensioner No., Category...">
+            </div>
+            <div class="admin-container">
+                <div class="dashboard-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pensioner No.</th>
+                                <th>Full Name</th>
+                                <th>Category</th>
+                                <th>Serial Number</th>
+                                <th>Task</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTable"></tbody>
+                    </table>
+                    <div class="pagination">
+                        <a href="#" onclick="previousPage()" class="prev">Previous</a>
+                        <a href="#" onclick="nextPage()" class="next">Next</a>
+                    </div>
+                </div>
             </div>
         </div>
-    
 
-    <div class="overlay" onclick="closeModal()"></div>
+    <div class="overlay"></div>
     <div class="modal">
+
         <div class="modal-header">
-            <h2>Beneficiary Information</h2> <span id="submissionDate">Submission Date: </span>
+            <h2>Beneficiary Information</h2> 
+            <span id="submissionDate">Submission Date: </span>
             <span class="modal-close">&times;</span>
         </div>
+
         <div class="modal-body">
             <div class="modal-left">
                 <div class="modal-circle">
@@ -99,30 +116,47 @@
                         <input type="text" class="modal-input CRS" placeholder="CRS" readonly>
                     </div>
                 </div>
-                <div class="modal-file">
-                    ID File: <button class="idFileViewButton" onclick="">View</button>
-                    Video Clip: <button class="videoClipViewButton" onclick="">View</button>
-                    Ret Order: <button class="retOrderViewButton" onclick="">View</button>
-                </div>
 
-                <div class="if-abroad">
-                <div class="modal-file">
-                    Oath of Allegiance: <button class="oathofAllegianceViewButton" onclick="">View</button>
-                </div>
-                <div class="modal-file">
-                    Certificate of Naturalization: <button class="certofNaturalizationViewButton" onclick="">View</button>
-                </div>
-                <div class="modal-file">
-                    Passport: <button class="passportViewButton" onclick="">View</button>
-                </div>
-                <div class="modal-file">
-                    Identification of Dual Citizenship: <button class="identificationDualCitizenViewButton" onclick="">View</button>
-                </div>
-                <div class="input-label">Abroad Address:</div>
-                <input type="text" class="modal-input abroadAddress" placeholder="Abroad Address" readonly>
-                </div>   
+    <div class="modal-file-subs">
+        <div class="file-item">
+            ID File: <button class="idFileViewButton" onclick="">View</button>
+        </div>
+        <div class="file-item">
+            Video Clip: <button class="videoClipViewButton" onclick="">View</button>
+        </div>
+        <div class="file-item">
+            Ret Order: <button class="retOrderViewButton" onclick="">View</button>
+        </div>
+    </div>
+
+<div class="if-abroad">
+    <div class="modal-file">
+        <div class="file-item">
+            Oath of Allegiance: <button class="oathofAllegianceViewButton" onclick="">View</button>
+        </div>
+    </div>
+    <div class="modal-file">
+        <div class="file-item">
+            Certificate of Naturalization: <button class="certofNaturalizationViewButton" onclick="">View</button>
+        </div>
+    </div>
+    <div class="modal-file">
+        <div class="file-item">
+            Passport: <button class="passportViewButton" onclick="">View</button>
+        </div>
+    </div>
+    <div class="modal-file">
+        <div class="file-item">
+            Identification of Dual Citizenship: <button class="identificationDualCitizenViewButton" onclick="">View</button>
+        </div>
+    </div>
+    <div class="input-label">Abroad Address:</div>
+    <input type="text" class="modal-input abroadAddress" placeholder="Abroad Address" readonly>
+</div>
+
             </div>
         </div>
+
     </div>
 
     <div id="addAccountModal" class="modalAdd">
@@ -178,10 +212,7 @@
         </div>
     </div>
 
-    <div class="pagination">
-        <a href="#" onclick="previousPage()" class="prev">Previous</a>
-        <a href="#" onclick="nextPage()" class="next">Next</a>
-    </div>
+
 </div>
     </body>
 
