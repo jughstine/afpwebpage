@@ -1,11 +1,16 @@
-
+        * {
+            box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
+        }
+        
         body , .main{
             display: flex;
             height: 100vh; 
             font-family: Arial, sans-serif;
-            margin: 0px;
+            margin: 0;
             background-color: #ffffff; /* Gray background for the body */
-        }
+            overflow-x: hidden; /* Prevent horizontal scrolling */    
+            }
+
         .sidebar {
             position: fixed; /* Keep header fixed */
             top: 0;
@@ -46,7 +51,7 @@
 
         .sidebar p {
             font-size: 24px; /* Adjust the font size as needed */
-            margin-left: -200px;
+            margin-left: 0;
         }
 
         .sidebar p #username {
@@ -69,7 +74,7 @@
     margin-left: 250px; /* Leave space for the header */
     padding: 20px; /* Add some padding */
     flex-grow: 1; /* Allow it to grow */
-    background-color: #ffffff; /* Background color for main content */
+    background-color: #e5e5e5; /* Background color for main content */
     overflow-y: auto; /* Allow scrolling if content overflows */
 }
         
@@ -106,11 +111,11 @@
         }
         
         /* Adjust column widths properly */
-        th:nth-child(1), td:nth-child(1) { width: 14%; } /* Pensioner No. */
-        th:nth-child(2), td:nth-child(2) { width: 28%; } /* Full Name */
-        th:nth-child(3), td:nth-child(3) { width: 20%; } /* Category */
+        th:nth-child(1), td:nth-child(1) { width: 15%; } /* Pensioner No. */
+        th:nth-child(2), td:nth-child(2) { width: 25%; } /* Full Name */
+        th:nth-child(3), td:nth-child(3) { width: 15%; } /* Category */
         th:nth-child(4), td:nth-child(4) { width: 20%; } /* Serial Number */
-        th:nth-child(5), td:nth-child(5) { width: 17%; } /* Task */
+        th:nth-child(5), td:nth-child(5) { width: 20%; } /* Task */
         
         /* Ensure rounded corners are applied correctly */
         thead tr:first-child th:first-child {
@@ -406,7 +411,7 @@
         }
         
         #searchInput {
-            width: 50%;
+            width: 300px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -524,21 +529,33 @@
             cursor: pointer;
         }
 
-        .modal-header {
+
+        .modalAdd .modal-header {
+            align-items: center;
             display: flex;
-            align-items: center; /* Align items vertically */
-            justify-content: space-between; /* Space between title and dropdown */
-            margin-bottom: 20px; /* Space before the first input field */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
+            margin-bottom: 0; /* Space before the first input field */
+        }
+
+        .modal-header h2 {
+            margin: 0; /* Remove default margin */
+            line-height: 1.2; /* Adjust line height */
+        }
+        
+        .dropdown-cont {
+            width: 100%;
+            margin-top: 20px; /* Add some space between the title and the dropdown */
         }
         
         .update-role-select {
-            padding: 5px;
-            margin-right: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-size: 16px; /* Adjust as needed */
-            background-color: #fff; /* Match modal background or as preferred */
-            cursor: pointer;
+            padding: 5px; /* Padding inside the dropdown */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #ddd; /* Light gray border */
+            font-size: 16px; /* Font size for the dropdown */
+            background-color: #fff; /* White background for the dropdown */
+            cursor: pointer; /* Pointer cursor on hover */
+            width: 100%; /* Make the dropdown take the full width of the container */
         }
 
         .modal-update-submit {

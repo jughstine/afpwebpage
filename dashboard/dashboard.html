@@ -35,7 +35,6 @@
         </div>
 
         <div class="main-content">
-
             <div>
                 <p>Good day, <span id="username">Admin</span></p>
             </div>  
@@ -43,6 +42,7 @@
             <div class="search-container">
                 <input type="text" id="searchInput" placeholder="Search by Name, Pensioner No., Category...">
             </div>
+            
             <div class="admin-container">
                 <div class="dashboard-container">
                     <table>
@@ -180,9 +180,11 @@
             <form id="updateAccountForm">
                 <div class="modal-header">
                     <h2>Update Account</h2>
-                    <select id="updateRole" class="update-role-select">
-                        <option value="">Select Account</option>
-                    </select>
+                    <div class="dropdown-cont">
+                        <select id="updateRole" class="update-role-select">
+                            <option value="">Select Account</option>
+                        </select>
+                    </div>
                 </div>
                 <input type="text" id="updateFullName" placeholder="Full Name" required>
                 <input type="tel" id="updatePhoneNumber" placeholder="Phone Number" required pattern="[0-9]{11}" maxlength="11" title="Phone number must be 11 digits long">
