@@ -87,3 +87,108 @@ export async function clearModalLogs() {
         alert("Failed to clear history logs.");
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    displayLogs(); // Call the function to display logs on page load
+
+    // Bind the search functionality after the DOM content is loaded to ensure the element is available
+    document.getElementById('searchLogs').addEventListener('input', function(e) {
+    const searchValue = e.target.value.toLowerCase();
+    const logEntries = document.querySelectorAll('.modalLogs-body .log-entry'); // Use correct selector
+
+    logEntries.forEach(entry => {
+        const text = entry.textContent.toLowerCase();
+        if (text.includes(searchValue)) {
+            entry.style.display = '';
+        } else {
+            entry.style.display = 'none';
+        }
+    });
+});
+
+    const clearButton = document.querySelector('.clearLogs-button');
+    if (clearButton) {
+        clearButton.onclick = clearModalLogs;
+    }
+});
+
+
+export function clearLogsUI() {
+    // Simplify the UI clearing function to avoid duplication
+    const logContainer = document.querySelector('.modalLogs-body');
+    logContainer.innerHTML = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const clearButton = document.querySelector('.clearLogs-button');
+    if (clearButton) {
+        clearButton.onclick = clearModalLogs;
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Attach event listeners to the buttons
+    document.querySelector('.select-all-logs-button').addEventListener('click', selectAllLogs);
+    document.querySelector('.unselect-all-logs-button').addEventListener('click', unselectAllLogs);
+    document.querySelector('.delete-selected-logs-button').addEventListener('click', deleteSelectedLogs);
+
+});
+
+function selectAllLogs() {
+    const logEntries = document.querySelectorAll('.modalLogs-body .log-entry');
+    logEntries.forEach(entry => {
+        const checkbox = entry.querySelector('.log-checkbox');
+        if (checkbox && entry.style.display !== 'none') {
+            checkbox.checked = true;
+        }
+    });
+}
+
+function unselectAllLogs() {
+    const logEntries = document.querySelectorAll('.modalLogs-body .log-entry');
+    logEntries.forEach(entry => {
+        const checkbox = entry.querySelector('.log-checkbox');
+        if (checkbox && entry.style.display !== 'none') {
+            checkbox.checked = false;
+        }
+    });
+}
+
+
+async function deleteSelectedLogs() {
+    const checkboxes = document.querySelectorAll('.log-checkbox');
+    const batch = writeBatch(db);
+    let hasDeletions = false;
+
+    // Check if any checkboxes are selected
+    checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+            hasDeletions = true;
+        }
+    });
+
+    // Proceed only if there is something to delete and the user confirms the action
+    if (hasDeletions && confirm("Do you want to delete the selected logs?")) {
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                const docId = checkbox.getAttribute('data-doc-id');
+                if (docId) {
+                    const docRef = doc(db, "hlogs", docId);
+                    batch.delete(docRef);
+                }
+            }
+        });
+
+        try {
+            await batch.commit();
+            console.log("Selected logs have been deleted from Firestore.");
+            displayLogs(); // Refresh log display after deletion
+            alert("Logs successfully deleted."); // Alert the user that logs were successfully deleted
+        } catch (error) {
+            console.error("Error deleting selected logs: ", error);
+            alert("Failed to delete logs. Please try again."); // Inform the user if deletion fails
+        }
+    } else if (!hasDeletions) {
+        console.log("No logs selected for deletion."); // Inform user if no logs were selected
+    }
+}

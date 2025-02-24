@@ -11,6 +11,8 @@
             overflow-x: hidden; /* Prevent horizontal scrolling */    
             }
 
+/* SIDEBAR SECTION */
+
         .sidebar {
             position: fixed; /* Keep header fixed */
             top: 0;
@@ -57,6 +59,8 @@
         .sidebar p #username {
             font-weight: bold;
         }
+
+/* MAIN CONTENT SECTION */
     
         .dashboard-container {
             width: 1230px; /* Set a fixed width */
@@ -78,6 +82,9 @@
     overflow-y: auto; /* Allow scrolling if content overflows */
 }
         
+
+/* TABLE SECTION */
+
         table {
             table-layout: fixed;
             border-collapse: separate; /* Prevents border-collapse issue */
@@ -226,7 +233,10 @@
             border-bottom: 1px solid rgb(0, 0, 0) !important; /* Add border when clicked */
         }
 
-        .modal {
+
+/* PENSIONER MODAL INFO SECTION */
+
+        .pensioner-modal {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -235,18 +245,27 @@
             max-width: 1000px; /* Set a maximum width */
             max-height: 80%; /* Set a maximum height */
             background-color: white;
-            padding: 20px;
             border-radius: 8px;
             display: none; /* Hidden by default */
             z-index: 2; /* Sit on top */
             overflow-y: auto; /* Allow scrolling if content exceeds max height */
         }
 
-        .modal-header {
+        .pensioner-modal .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #90aae8;
+            min-height: 100%;
+            min-width:  100%;
+            padding: 2%;
+        }
 
+        .pensioner-modal  .modal-body {
+            padding-right: 30px;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: row; /* Keep the left and right sections side by side */
         }
 
         .modal-close {
@@ -262,7 +281,8 @@
             text-decoration: none;
         }
 
-        .modal-body {
+        .modalAdd .modal-body {
+            padding-top: 20px;
             display: flex;
             flex-direction: row; /* Keep the left and right sections side by side */
         }
@@ -304,10 +324,14 @@
         flex-direction: row; /* Align items in a row */
         align-items: center; /* Center items vertically */
         margin-bottom: 20px; 
+        width: 100%; 
+        justify-content: space-between;
         }
 
         .modal-file-subs .file-item {
-            margin-right: 20px; 
+            width: 100%;
+            padding-right: 5px;
+            margin-right: 0px; 
         }
 
         .modal-input {
@@ -362,7 +386,6 @@
         .modal-right .input-row {
             display: flex; /* Align children in a row */
             justify-content: space-between; /* Distribute space between children */
-            margin-right: 30px;
         }
 
         .modal-right .input-row > div {
@@ -402,6 +425,8 @@
             margin-top: 20px; /* Add some space above the button */
             cursor: pointer; /* Change cursor to pointer on hover */
         }
+
+        /* SEARCH CONTAINER SECTION */
 
         .search-container {
             position: absolute; /* Position it absolutely within the admin-container */
@@ -457,10 +482,27 @@
             padding: 20px;
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.556);
-
             justify-content: center;
             z-index: 2;
         }
+
+        /* UPDATE ACCOUNT MODAL */
+
+        .modalUpdate {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.556);
+            justify-content: center;
+            z-index: 2;
+        }
+
         .modal-content {
             background-color: #fefefe;
             margin: 10% auto;
@@ -469,7 +511,6 @@
             width: 80%;
             max-width: 450px;
             border-radius: 5px;
-
         }
 
         .close-buttonAdd {
@@ -559,13 +600,13 @@
         }
 
         .modal-update-submit {
-            padding: 10px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+        
         .modal-update-submit:hover {
             background-color: #0056b3;
         }

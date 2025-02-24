@@ -2,7 +2,7 @@ import { db, doc, getDoc } from './firebaseConfig.js';
 import { updateFileAvailability } from './table.js';
 
 export async function openModal(docId) {
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('.pensioner-modal');
     const overlay = document.querySelector('.overlay');
     const docRef = doc(db, "users", docId);
     const docSnap = await getDoc(docRef);
@@ -90,7 +90,7 @@ export async function openModal(docId) {
 
 export async function openModalForUpdate(docId) {
     let currentDocId = docId;
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('.pensioner-modal');
     const overlay = document.querySelector('.overlay');
 
     // Show the modal and overlay
@@ -227,7 +227,7 @@ export async function openModalForUpdate(docId) {
 }
 
 export function closeModal() {
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('.pensioner-modal');
     const overlay = document.querySelector('.overlay');
     modal.style.display = 'none';
     overlay.style.display = 'none';
